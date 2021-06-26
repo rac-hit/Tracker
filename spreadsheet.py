@@ -34,7 +34,7 @@ def yt_data():
     video_number= video_number[12:-2]
     video_number= int(float(video_number))
     print(video_number)
-    for i in range(160, video_number):
+    for i in range(video_number):
         try:
             v_n= str(vdb.cell(i+3, 2))
             v_n = v_n.split("'")[1]
