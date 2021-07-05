@@ -4,8 +4,10 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import time
 from metabase_rev import meta_rev
+from current_time import time_now
 
 def meta():
+    time_now()
     scope= ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
     creds= ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
     client= gspread.authorize(creds)

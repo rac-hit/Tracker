@@ -6,8 +6,10 @@ from signups_through_gsheet import main_utm
 from datetime import date
 from datetime import datetime
 from json import dumps
+from current_time import time_now
 
 def yt_data():
+    time_now()
     scope= ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
     creds= ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
     client= gspread.authorize(creds)
@@ -35,6 +37,8 @@ def yt_data():
     video_number= int(float(video_number))
     print(video_number)
     for i in range(video_number):
+        if i==159:
+            continue
         try:
             v_n= str(vdb.cell(i+3, 2))
             v_n = v_n.split("'")[1]

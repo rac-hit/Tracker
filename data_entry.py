@@ -1,8 +1,10 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import time
+from current_time import time_now
 
 def entry():
+    time_now()
     scope= ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
     creds= ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
     client= gspread.authorize(creds)
@@ -139,7 +141,10 @@ def entry():
         #data_entry.insert(5, status)
         #data_entry.insert(6, video_number)
         #entry_comp.insert_row(data_entry, 2)
+        time.sleep(15)
     entry.delete_rows(3, entry_number+ 3)
+    
+
     return 
 
 

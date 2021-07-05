@@ -7,8 +7,10 @@ from slack import slack
 from poc import poc_summary
 from influencer import inf_summary 
 from datetime import timedelta
+from current_time import time_now
 
 def summary():
+    time_now()
     scope= ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
     creds= ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
     client= gspread.authorize(creds)
