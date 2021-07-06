@@ -6,7 +6,7 @@ from emtryMul import mulclicks
 
 
 def main():
-    #entry()
+    entry()
     yt_data()
     meta()
     mulclicks()
