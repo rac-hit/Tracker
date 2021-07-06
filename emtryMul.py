@@ -19,7 +19,7 @@ def mulclicks():
     video_number= str(entrymul.cell(1, 2))
     video_number= video_number[12:-2]
     video_number= int(float(video_number))
-    for i in range(209,video_number):
+    for i in range(video_number):
         rebrandly_link= str(entrymul.cell(i+3, 3))
         #youtube data is scrapped from youtube_data
         try:
