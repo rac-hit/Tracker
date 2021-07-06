@@ -37,8 +37,8 @@ def yt_data():
     video_number= int(float(video_number))
     print(video_number)
     for i in range(video_number):
-        if i==159:
-            continue
+        #if i==159:
+            #continue
         try:
             v_n= str(vdb.cell(i+3, 2))
             v_n = v_n.split("'")[1]
@@ -47,7 +47,7 @@ def yt_data():
             inf = inf.split("'")[1]
             inf= int(float(inf))
         except:
-            break
+            continue
         #link of the youtube video extracted
         youtube_link= str(vdb.cell(i+3, 3))
         youtube_link = youtube_link.split(" ")[2]
