@@ -40,19 +40,43 @@ def main_utm(i):
     response_id = requests.request("GET", url_id, headers=headers)
     response_id = json.loads(response_id.text)
     destination = response_id['destination']
+
     destination = (destination.split("?"))[1]
-    destination = destination.split("=")
+    print(destination)
+    destination = destination.split("&")
+    print(destination)
+    utm_term = ""
+    utm_source = ""
+    utm_medium= ""
+    utm_campaign = ""
+    for i in destination:
+      utm = i.split("=")
+      print(utm)
+      if(utm[0] =="utm_term"):
+        utm_term= utm[1]
+      if(utm[0] =="utm_source"):
+        utm_source= utm[1]
+      if(utm[0] =="utm_medium"):
+        utm_medium= utm[1]
+      if(utm[0] =="utm_campaign"):
+        utm_campaign= utm[1]
     
-    utm_soruce = destination[1].split("&")[0]
-    utm_medium = destination[2].split("&")[0]
-    utm_campaign = destination[3].split("&")[0]
-    utm_term = destination[4]
+    # destination = response_id['destination']
+    # destination = (destination.split("?"))[1]
+    # destination = destination.split("=")
+    
+    # utm_soruce = destination[1].split("&")[0]
+    # utm_medium = destination[2].split("&")[0]
+    # utm_campaign = destination[3].split("&")[0]
+    # utm_term = destination[4]
         
     df1 = df[df['$properties.utm_term'] == utm_term]
-    df1 = df1[df1['$properties.utm_source'] == utm_soruce]
+    df1 = df1[df1['$properties.utm_source'] == utm_source]
     df1 = df1[df1['$properties.utm_medium'] == utm_medium]
     df1 = df1[df1['$properties.utm_campaign'] == utm_campaign]
     result = (len(df1))
     return result 
+
+
 
 

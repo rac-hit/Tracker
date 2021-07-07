@@ -6,10 +6,10 @@ from emtryMul import mulclicks
 
 
 def main():
-    entry()
+    # entry()
     yt_data()
     meta()
     mulclicks()
-    summary()
+    # summary()
 if __name__ == "__main__":
     main()

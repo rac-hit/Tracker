@@ -1,48 +1,20 @@
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
-from rebrand import rebrand
 import pandas as pd
 import json
 import requests
-from current_time import time_now
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
-def mulclicks():
-    time_now()
+def main_utm():
     scope= ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
     creds= ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
     client= gspread.authorize(creds)
-    
-    #ipm -> Influencer Performance Metrics
-    #vdb -> Video Database
-    #vpm -> Video Performace Metrics
-    entrymul= client.open('InfluencersDB').worksheet("EntryMul")
-    video_number= str(entrymul.cell(1, 2))
-    video_number= video_number[12:-2]
-    video_number= int(float(video_number))
-    for i in range(video_number):
-        rebrandly_link= str(entrymul.cell(i+3, 3))
-        #youtube data is scrapped from youtube_data
-        try:
-            clicks = rebrand(rebrandly_link)
-        except:
-            continue
-        try:
-            signups = main_ut(rebrandly_link)
-        except:
-            continue
-        entrymul.update_cell(i+3, 4, int(clicks))
-        entrymul.update_cell(i+3, 5, int(signups))
-    return
-    
-def main_ut(rebrandly_link):
     df = pd.read_csv("https://docs.google.com/spreadsheets/d/1LsbFck7tqQWgqVx2UAOB8IUDDc9CdcCcq76m9zSELkE/gviz/tq?tqx=out:csv&sheet=mixpanel") 
-    rebrandly_link = rebrandly_link.split(" ")[2]
-    rebrandly_link = rebrandly_link[1:-2]
-    #print(rebrandly_link)
+
+    rebrandly_link = "https://relvl.co/f7p"
+    print(rebrandly_link)
     domain_id= rebrandly_link[8:16]
-    #print(domain_id)
+    print(domain_id)
     slashtag = rebrandly_link[17:]
-    #print(slashtag)
     print(slashtag)
     url = "https://api.rebrandly.com/v1/links/"
     
@@ -84,10 +56,16 @@ def main_ut(rebrandly_link):
       if(utm[0] =="utm_campaign"):
         utm_campaign= utm[1]
     ###
-        
+    print(utm_source)
+    print(utm_medium)
+    print(utm_campaign)
+    print(utm_term)
+    
     df1 = df[df['$properties.utm_term'] == utm_term]
     df1 = df1[df1['$properties.utm_source'] == utm_source]
     df1 = df1[df1['$properties.utm_medium'] == utm_medium]
     df1 = df1[df1['$properties.utm_campaign'] == utm_campaign]
     result = (len(df1))
-    return result 
+    print(result) 
+
+main_utm()
