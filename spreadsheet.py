@@ -36,7 +36,7 @@ def yt_data():
     video_number= video_number[12:-2]
     video_number= int(float(video_number))
     print(video_number)
-    for i in range(video_number):
+    for i in range(231, video_number):
         #if i==159:
             #continue
         try:
