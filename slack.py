@@ -13,8 +13,6 @@ def slack():
         
     vpm= client.open('InfluencersDB').worksheet("Video Performace Metrics")
     
-    #web_hook_url ='https://hooks.slack.com/services/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'
-    web_hook_url = 'https://hooks.slack.com/services/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'
     today = date.today()
     today= today.strftime("%d/%m/%y")
     today = dumps(today).strip('"')
