@@ -3,7 +3,7 @@ from datetime import date
 from datetime import datetime
 from json import dumps
 
-youtube = build('youtube','v3', developerKey="AIzaSyCjrL9Av17oQaowg-MQ7xUoksOeTZ-rnJ0") 
+youtube = build('youtube','v3', developerKey="") 
 
 def scrap(url_id):  
     video_request=youtube.videos().list(
