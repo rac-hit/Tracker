@@ -2,10 +2,10 @@ import requests
 import pandas as pd
 
 def meta_rev(x):
-    res = requests.post('https://relevel-metabase.herokuapp.com/api/session', 
+    res = requests.post('', 
                         headers = {"Content-Type": "application/json"},
-                        json =  {"username": "rachit@relevel.com", 
-                                 "password": "YUBBHeQs5owV-0"}
+                        json =  {"username": "", 
+                                 "password": ""}
                        )
     assert res.ok == True
     token = res.json()['id']
